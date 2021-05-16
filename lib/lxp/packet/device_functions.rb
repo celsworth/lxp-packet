@@ -8,6 +8,11 @@ class LXP
       WRITE_SINGLE = 6
       WRITE_MULTI  = 16
 
+      # firmware updates, no idea how to use
+      UPDATE_PREPARE   = 33
+      UPDATE_SEND_DATA = 34
+      UPDATE_RESET     = 35
+
       # not handled yet
       READ_HOLD_ERROR    = 131
       READ_INPUT_ERROR   = 132

@@ -1,0 +1,30 @@
+There actually seems to be a third type of register you can read from the inverter,
+but I haven't had much success with it.
+
+If you set TCP_FUNCTION to 195, you appear to be talking to the datalog itself rather
+than the inverter through the datalog. These appear to be "parameters".
+
+I've only had one reply in this mode so far. For my inverter, I'm sending this:
+
+[161, 26, 1, 0, 14, 0, 1, 195, 66, 65, 49, 57, 50, 54, 48, 48, 50, 52, 0, 0]
+
+So that means read parameter 0, I think.  There doesn't appear to be a checksum.
+
+It returns this:
+
+[161, 26, 2, 0, 18, 0, 1, 195, 66, 65, 49, 57, 50, 54, 48, 48, 50, 52, 0, 0, 2, 0, 180, 0]
+
+And I'm pretty sure that 180 is the interval at which the datalog sends input readings
+out (every 3 minutes). (or is it 180 parameters available to read?)
+
+My best-guess vague list of what parameters are available is:
+
+0 = heartbeat/input broadcast interval
+1 = serial number (10 bytes?)
+3 = reset to factory settings, I think if you write 165 to this, it'll reset, untested
+
+But other than 0 I can't get any of them to respond. eg sending this does nothing:
+
+[161, 26, 1, 0, 14, 0, 1, 195, 66, 65, 49, 57, 50, 54, 48, 48, 50, 52, 1, 0]
+
+Also haven't tried setting these parameters yet.
