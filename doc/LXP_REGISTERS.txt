@@ -18,12 +18,16 @@ settings, apply your changes, and set the new value back.
     meterBrand
     measurement
     rule
-2-8 SERIAL_NUM
+2-6 SERIAL_NUM
 7 FW_CODE ?
 9-10 ?
 12-14 TIME
+  12 = month (MSB)  year (LSB, 2 digit, eg 2022 = 22)
+  13 = hour (MSB)   day (LSB)
+  14 = second (MSB) minute (LSB)
 15 COM_ADDR
 16 LANGUAGE
+19 DEVICE TYPE
 20 PV_INPUT_MODE
 21 FUNC_AC_CHARGE / FUNC_FORCED_DISCHG_EN / FUNC_FORCED_CHG_EN /
    FUNC_EPS_EN / FUNC_FEED_IN_GRID_EN / FUNC_SET_TO_STANDBY ?
